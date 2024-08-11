@@ -1,0 +1,14 @@
+<IfModule mod_mime.c>
+    AddType application/wasm .wasm
+    AddEncoding br .br
+    AddEncoding gzip .gz
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.br$">
+        Header set Content-Encoding br
+    </FilesMatch>
+    <FilesMatch "\.gz$">
+        Header set Content-Encoding gzip
+    </FilesMatch>
+</IfModule>
